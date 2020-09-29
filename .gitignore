@@ -1,1 +1,8 @@
 .DS_Store
+.eggs
+
+.pytest_cache
+__pycache__
+
+*.egg-info
+dist
