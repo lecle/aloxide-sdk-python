@@ -15,8 +15,9 @@ Aloxide SDK for Python development and execution requires Python 3.7 or later.
 Setup a virtual environment, do it once:
 
 ```bash
-$ python3 -m venv aloxide-sdk
-$ source ./aloxide-sdk/bin/activate
+$ cd aloxide-sdk-python
+$ python -m venv .venv
+$ source .venv/bin/activate
 $ pip install wheel
 $ pip install setuptools
 $ pip install twine
@@ -29,7 +30,7 @@ And following are commands you will use during development:
 $ python setup.py pytest
 
 # build
-$ python setup.py sdist bdist_wheel
+$ rm -rf dist && python setup.py sdist bdist_wheel
 
 # install from source for testing in other projects
 $ pip install -e /path/to/aloxide-sdk-python
