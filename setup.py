@@ -3,10 +3,15 @@ from setuptools import find_packages, setup
 with open('requirements.txt') as requirements:
   requires = list(requirements)
 
+with open('README.md', 'r') as readme:
+  long_description = readme.read()
+
 setup(
   name = 'aloxidesdk',
-  version = '0.1.0',
+  version = '0.1.1',
   description = 'Aloxide SDK for Python is a collection of libraries which allow you to access various blockchains',
+  long_description = long_description,
+  long_description_content_type = 'text/markdown',
   keywords = ['blockchain', 'icon', 'eosio'],
   author = 'Lecle',
   url = 'https://github.com/lecle/aloxide-sdk-python',
