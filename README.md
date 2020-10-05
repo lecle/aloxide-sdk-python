@@ -58,7 +58,7 @@ Once you have installed `aloxidesdk` library, you can import it using:
 
 ```python
 import aloxidesdk
-from aloxidesdk import utils
+from aloxidesdk.aloxide_service import AloxideService
 
 # more code go here
 ```

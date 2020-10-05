@@ -14,7 +14,7 @@ def test_deploy_icon_contract():
     'initialSupply': 1000
   }
 
-  tx_result = service.deploy_contract(score_path_standard_token, '9c47f32534309f67e88cf71aeb2e0269c7a84501341cae1f122b0195263be601', params)
+  tx_result = service.deploy_contract(score_path_standard_token, '00f9417a4b915d39df04f195efc95ae7d4139728cb0f60b5eb418be666b70018', params)
 
   print('scoreAddress:', tx_result['scoreAddress'])
   assert 42 == len(tx_result['scoreAddress'])
