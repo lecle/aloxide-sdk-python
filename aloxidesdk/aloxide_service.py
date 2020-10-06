@@ -13,6 +13,7 @@ class AloxideService:
       self.icon_service = self.icon_network.icon_service
     elif EOS_NETWORK == config['type']:
       self.eos_network = EosNetwork(config['endpoint'])
+      self.eos_client = self.eos_network.cleos
     else:
       raise KeyError('Unsupported network type')
 
