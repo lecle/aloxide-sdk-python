@@ -34,9 +34,9 @@ class IconNetwork:
     result = self.icon_service.call(call_data)
     return convert_hex_str_to_int(result)
 
-  def deploy_contract(self, contract_file, wallet_key, params):
-    wallet = KeyWallet.load(bytes.fromhex(wallet_key))
-    contract_content_bytes = gen_deploy_data_content(contract_file)
+  def deploy_contract(self, contract_info, account_info):
+    wallet = KeyWallet.load(bytes.fromhex(account_info['wallet_key']))
+    contract_content_bytes = gen_deploy_data_content(contract_info['contract_file'])
 
     deploy_transaction = DeployTransactionBuilder() \
       .from_(wallet.get_address()) \
@@ -46,7 +46,7 @@ class IconNetwork:
       .nonce(self.network_id) \
       .content_type('application/zip') \
       .content(contract_content_bytes) \
-      .params(params) \
+      .params(contract_info['params']) \
       .version(self.network_id) \
       .build()
 
