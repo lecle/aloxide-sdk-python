@@ -1,6 +1,4 @@
-import datetime
 import json
-import pytz
 from eospy.cleos import Cleos
 from eospy.types import Abi
 from eospy.keys import EOSKey
@@ -13,12 +11,8 @@ class EosNetwork:
 
   def deploy_contract(self, contract_info, account_info):
     setcode_action = self.create_setcode_action(contract_info['code_file'], account_info['name'])
-    setabi_action = self.create_setcode_action(contract_info['abi_file'], account_info['name'])
-    transaction = {
-      'actions': [setcode_action, setabi_action],
-      'expiration': str((datetime.datetime.utcnow() + datetime.timedelta(seconds=60)).replace(tzinfo=pytz.UTC))
-    }
-
+    setabi_action = self.create_setabi_action(contract_info['abi_file'], account_info['name'])
+    transaction = { 'actions': [setcode_action, setabi_action] }
     key = EOSKey(account_info['private_key'])
     tx_result = self.cleos.push_transaction(transaction, key)
     return tx_result
