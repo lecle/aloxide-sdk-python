@@ -5,8 +5,7 @@ from iconsdk.providers.http_provider import HTTPProvider
 from iconsdk.signed_transaction import SignedTransaction
 from iconsdk.wallet.wallet import KeyWallet
 from iconsdk.builder.call_builder import CallBuilder
-from iconsdk.builder.transaction_builder import TransactionBuilder
-from iconsdk.builder.transaction_builder import DeployTransactionBuilder
+from iconsdk.builder.transaction_builder import CallTransactionBuilder, DeployTransactionBuilder
 from iconsdk.utils.convert_type import convert_hex_str_to_int
 from iconsdk.libs.in_memory_zip import gen_deploy_data_content
 
@@ -85,3 +84,36 @@ class IconNetwork:
       error = sys.exc_info()
       # print('get_transaction_result error:', error[1])
       return None
+
+  def read_data(self, contract_address, action_name, wallet_key, params):
+    wallet = KeyWallet.load(bytes.fromhex(wallet_key))
+
+    call_data = CallBuilder() \
+      .from_(wallet.get_address()) \
+      .to(contract_address) \
+      .method(action_name) \
+      .params(params) \
+      .build()
+
+    result = self.icon_service.call(call_data)
+    return result
+
+  def write_data(self, contract_address, action_name, wallet_key, params):
+    wallet = KeyWallet.load(bytes.fromhex(wallet_key))
+
+    call_transaction = CallTransactionBuilder() \
+      .from_(wallet.get_address()) \
+      .to(contract_address) \
+      .step_limit(self.get_max_step_limit(wallet.get_address())) \
+      .nid(self.network_id) \
+      .nonce(self.network_id) \
+      .method(action_name) \
+      .params(params) \
+      .build()
+
+    signed_transaction = SignedTransaction(call_transaction, wallet)
+    tx_hash = self.icon_service.send_transaction(signed_transaction)
+    # print('tx_hash:', tx_hash)
+
+    tx_result = self.get_transaction_result(tx_hash)
+    return tx_result
