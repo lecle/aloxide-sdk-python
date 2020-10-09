@@ -1,4 +1,3 @@
-from os import path
 from iconsdk.utils.convert_type import convert_hex_str_to_int
 from aloxidesdk.aloxide_service import AloxideService, ICON_NETWORK
 

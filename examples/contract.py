@@ -37,12 +37,12 @@ def deploy_eos_contract():
     'abi_file': abi_file
   }, {
     'name': 'fqrmqfwxdsge',
-    'private_key': 'key'
+    'private_key': 'key goes here'
   })
   print(tx_result['transaction_id'])
 
 # deployed contract at cx75ebc9841a5b7f84fa12729a251ff54e6572f66a
 # deploy_icon_contract()
 
-# deployed contract at a4c1967bdcab903a36912a8fa5dba3daa7edb449d5d783a8a513a5354e2b5996
+# deployed contract at ce3b35e6822e079c2bcf491fc3423ca20ba29ec11d6ac1bd0287ea55e0839bd6
 # deploy_eos_contract()
