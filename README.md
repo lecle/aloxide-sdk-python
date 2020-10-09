@@ -9,6 +9,7 @@ Aloxide SDK for Python development and execution requires Python 3.7 or later.
 ## Dependencies
 
 [ICON SDK for Python](https://github.com/icon-project/icon-sdk-python)
+
 [EosPy](https://github.com/eosnewyork/eospy)
 
 ## Development

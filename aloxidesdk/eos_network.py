@@ -68,3 +68,25 @@ class EosNetwork:
     # Inserting payload binary form as 'data' field in original payload.
     payload['data'] = data['binargs']
     return payload
+
+  def read_data(self, code, scope, table_name):
+    return self.cleos.get_table(code, scope, table_name)
+
+  def write_data(self, contract_name, action_name, account_name, private_key, params):
+    payload = {
+      'account': contract_name,
+      'name': action_name,
+      'authorization': [{
+        'actor': account_name,
+        'permission': 'active'
+      }]
+    }
+    print(params)
+
+    data = self.cleos.abi_json_to_bin(payload['account'], payload['name'], params)
+    payload['data'] = data['binargs']
+    print(payload)
+    transaction = { 'actions': [payload] }
+    key = EOSKey(private_key)
+    tx_result = self.cleos.push_transaction(transaction, key)
+    return tx_result
