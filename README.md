@@ -14,6 +14,10 @@ Aloxide SDK for Python development and execution requires Python 3.7 or later.
 
 ## Development
 
+[Gitpod](https://www.gitpod.io/) is an online open source VS Code-like IDE (and is free for open source projects) for working on issues and making PRs to this project. With a single click it will start a workspace automatically.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/lecle/aloxide-sdk-python)
+
 Setup a virtual environment, do it once:
 
 ```bash
