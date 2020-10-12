@@ -8,7 +8,7 @@ with open('README.md', 'r') as readme:
 
 setup(
   name = 'aloxidesdk',
-  version = '0.1.2',
+  version = '0.1.3',
   description = 'Aloxide SDK for Python is a collection of libraries which allow you to access various blockchains',
   long_description = long_description,
   long_description_content_type = 'text/markdown',

@@ -40,3 +40,27 @@ class AloxideService:
       return self.eos_network.write_data(contract_info['contract_name'], contract_info['action_name'], account_info['name'], account_info['private_key'], params)
     else:
       return None
+
+  def create_data(self, contract_name, table_name, private_key, data):
+    if ICON_NETWORK == self.config['type']:
+      return self.icon_network.create_data(contract_name, table_name, private_key, data)
+    elif EOS_NETWORK == self.config['type']:
+      return self.eos_network.create_data(contract_name, table_name, private_key, data)
+    else:
+      return None
+
+  def update_data(self, contract_name, table_name, private_key, data):
+    if ICON_NETWORK == self.config['type']:
+      return self.icon_network.update_data(contract_name, table_name, private_key, data)
+    elif EOS_NETWORK == self.config['type']:
+      return self.eos_network.update_data(contract_name, table_name, private_key, data)
+    else:
+      return None
+
+  def delete_data(self, contract_name, table_name, private_key, data):
+    if ICON_NETWORK == self.config['type']:
+      return self.icon_network.delete_data(contract_name, table_name, private_key, data)
+    elif EOS_NETWORK == self.config['type']:
+      return self.eos_network.delete_data(contract_name, table_name, private_key, data)
+    else:
+      return None

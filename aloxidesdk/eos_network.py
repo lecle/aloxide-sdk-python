@@ -81,12 +81,21 @@ class EosNetwork:
         'permission': 'active'
       }]
     }
-    print(params)
+    # print(params)
 
     data = self.cleos.abi_json_to_bin(payload['account'], payload['name'], params)
     payload['data'] = data['binargs']
-    print(payload)
+    # print(payload)
     transaction = { 'actions': [payload] }
     key = EOSKey(private_key)
     tx_result = self.cleos.push_transaction(transaction, key)
     return tx_result
+
+  def create_data(self, contract_name, table_name, private_key, data):
+    return self.write_data(contract_name, 'cre' + table_name, contract_name, private_key, data)
+
+  def update_data(self, contract_name, table_name, private_key, data):
+    return self.write_data(contract_name, 'upd' + table_name, contract_name, private_key, data)
+
+  def delete_data(self, contract_name, table_name, private_key, data):
+    return self.write_data(contract_name, 'del' + table_name, contract_name, private_key, data)
