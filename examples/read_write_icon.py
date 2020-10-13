@@ -20,7 +20,7 @@ tx_result = service.write_data({
 }, params)
 
 # txHash': '0x9c8c2a83c157c6ed71d9e0c4c2409c4f366c6d749dd71db16ebb26a0ba09d268'
-print(tx_result)
+print(tx_result['txHash'])
 
 params = {
   '_owner': 'hx61fc50bef6442e733febc9747715b27cebbd082b'

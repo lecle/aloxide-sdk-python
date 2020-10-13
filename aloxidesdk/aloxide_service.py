@@ -27,7 +27,7 @@ class AloxideService:
 
   def read_data(self, contract_info, account_info = None, params = None):
     if ICON_NETWORK == self.config['type']:
-      return self.icon_network.read_data(contract_info['contract_address'], contract_info['action_name'], account_info['wallet_key'], params)
+      return self.icon_network.read_data(contract_info['contract_address'], contract_info['table_name'], account_info['wallet_key'], params)
     elif EOS_NETWORK == self.config['type']:
       return self.eos_network.read_data(contract_info['code'], contract_info['scope'], contract_info['table_name'])
     else:
