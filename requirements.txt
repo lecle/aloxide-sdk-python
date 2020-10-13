@@ -1,2 +1,2 @@
 iconsdk~=1.3.2
-libeospy @ git+https://github.com/eosnewyork/eospy@master#egg=libeospy
+aloxide-libeospy~=2.0.2

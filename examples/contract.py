@@ -25,8 +25,8 @@ def deploy_icon_contract():
 
 def deploy_eos_contract():
   current_dir_path = path.abspath(path.dirname(__file__))
-  code_file = path.join(current_dir_path, '../tests/data/eosio.token.wasm')
-  abi_file = path.join(current_dir_path, '../tests/data/eosio.token.abi')
+  code_file = path.join(current_dir_path, '../tests/data/hello.wasm')
+  abi_file = path.join(current_dir_path, '../tests/data/hello.abi')
   service = AloxideService({
     'type': EOS_NETWORK,
     'endpoint': 'https://jungle3.cryptolions.io:443'
@@ -37,12 +37,12 @@ def deploy_eos_contract():
     'abi_file': abi_file
   }, {
     'name': 'fqrmqfwxdsge',
-    'private_key': 'key goes here'
+    'private_key': 'key'
   })
   print(tx_result['transaction_id'])
 
 # deployed contract at cx75ebc9841a5b7f84fa12729a251ff54e6572f66a
 # deploy_icon_contract()
 
-# deployed contract at ce3b35e6822e079c2bcf491fc3423ca20ba29ec11d6ac1bd0287ea55e0839bd6
+# deployed contract at d56f9591280955ba0f5e6d0f76431d6464f9b3ed2a42df316a01d517407eb02f
 # deploy_eos_contract()

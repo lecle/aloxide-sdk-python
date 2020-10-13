@@ -85,13 +85,13 @@ class IconNetwork:
       # print('get_transaction_result error:', error[1])
       return None
 
-  def read_data(self, contract_address, action_name, wallet_key, params):
+  def read_data(self, contract_address, table_name, wallet_key, params):
     wallet = KeyWallet.load(bytes.fromhex(wallet_key))
 
     call_data = CallBuilder() \
       .from_(wallet.get_address()) \
       .to(contract_address) \
-      .method(action_name) \
+      .method('get' + table_name) \
       .params(params) \
       .build()
 
@@ -117,3 +117,12 @@ class IconNetwork:
 
     tx_result = self.get_transaction_result(tx_hash)
     return tx_result
+
+  def create_data(self, contract_address, table_name, wallet_key, data):
+    return self.write_data(contract_address, 'cre' + table_name, wallet_key, data)
+
+  def update_data(self, contract_address, table_name, wallet_key, data):
+    return self.write_data(contract_address, 'upd' + table_name, wallet_key, data)
+
+  def delete_data(self, contract_address, table_name, wallet_key, data):
+    return self.write_data(contract_address, 'del' + table_name, wallet_key, data)

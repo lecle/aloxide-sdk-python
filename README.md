@@ -10,7 +10,7 @@ Aloxide SDK for Python development and execution requires Python 3.7 or later.
 
 [ICON SDK for Python](https://github.com/icon-project/icon-sdk-python)
 
-[EosPy](https://github.com/eosnewyork/eospy)
+[EosPy](https://github.com/lecle/eospy)
 
 ## Development
 
@@ -47,7 +47,7 @@ $ pip install -e /path/to/aloxide-sdk-python
 It’s time to upload your package to the PyPI so others can use it. The first thing you’ll need to do is register an account on [TestPyPI](https://test.pypi.org/).
 
 ```bash
-$ twine upload -u your_user -p your_password --repository testpypi dist/*
+$ twine upload --repository testpypi dist/*
 ```
 
 Once uploaded the package should be viewable on TestPyPI at [https://test.pypi.org/project/aloxidesdk](https://test.pypi.org/project/aloxidesdk).
